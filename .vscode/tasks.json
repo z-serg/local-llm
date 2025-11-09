@@ -1,0 +1,148 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🟢 Запуск сервисов",
+      "type": "shell",
+      "command": "make up",
+      "group": "build",
+      "detail": "Запуск сервисов Ollama и Qdrant в фоновом режиме",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔴 Остановка сервисов",
+      "type": "shell",
+      "command": "make down",
+      "group": "build",
+      "detail": "Остановка всех сервисов проекта",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔄 Перезапуск сервисов",
+      "type": "shell",
+      "command": "make restart",
+      "group": "build",
+      "detail": "Полный перезапуск сервисов Ollama и Qdrant",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📋 Статус сервисов",
+      "type": "shell",
+      "command": "make status",
+      "group": "test",
+      "detail": "Показать статус всех контейнеров проекта",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📊 Просмотр логов",
+      "type": "shell",
+      "command": "make logs",
+      "group": "test",
+      "detail": "Просмотр логов всех сервисов в реальном времени",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "⚙️ Полная настройка",
+      "type": "shell",
+      "command": "make setup",
+      "group": "build",
+      "detail": "Полная настройка проекта: запуск сервисов и загрузка моделей",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📥 Загрузка моделей",
+      "type": "shell",
+      "command": "make pull-models",
+      "group": "build",
+      "detail": "Загрузка моделей embeddinggemma:300m и qwen2.5-coder:7b в Ollama",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🧹 Очистка контейнеров",
+      "type": "shell",
+      "command": "make clean",
+      "group": "build",
+      "detail": "Остановка и удаление контейнеров проекта",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "⚠️ Полная очистка с томами",
+      "type": "shell",
+      "command": "make clean-volumes",
+      "group": "build",
+      "detail": "Полная очистка с удалением томов (все данные будут потеряны!)",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🌐 Показать URL сервисов",
+      "type": "shell",
+      "command": "make urls",
+      "group": "test",
+      "detail": "Вывод всех URL для доступа к сервисам проекта",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "❓ Справка по командам",
+      "type": "shell",
+      "command": "make help",
+      "group": "test",
+      "detail": "Показать справку по всем доступным командам Makefile",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    }
+  ]
+}
