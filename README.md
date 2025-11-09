@@ -10,7 +10,7 @@
 
 - **Ollama** - Сервер для запуска и управления локальными языковыми моделями
   - Порт: `11434`
-  - Предустановленные модели: `embeddinggemma:300m` и `qwen2.5-coder:7b`
+  - Предустановленные модели: `nomic-embed-text:v1.5` и `qwen2.5-coder:7b`
   - Данные сохраняются в Docker volume `ollama_data`
 
 - **Qdrant** - Высокопроизводительная векторная база данных
@@ -56,7 +56,7 @@ docker-compose up -d
 sleep 10
 
 # Загрузка моделей
-curl -X POST http://localhost:11434/api/pull -d '{"name": "embeddinggemma:300m"}'
+curl -X POST http://localhost:11434/api/pull -d '{"name": "nomic-embed-text:v1.5"}'
 curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder:7b"}'
 ```
 
@@ -112,7 +112,7 @@ make help    # Показать справку по всем командам
 
 Платформа включает две предустановленные модели:
 
-### embeddinggemma:300m
+### nomic-embed-text:v1.5
 - **Тип**: Модель для создания эмбеддингов (векторных представлений)
 - **Размер**: 300 миллионов параметров
 - **Назначение**: Преобразование текста в векторные представления для поиска и классификации
@@ -135,7 +135,7 @@ import json
 # Создание эмбеддингов через Ollama
 def create_embedding(text):
     response = requests.post('http://localhost:11434/api/embeddings', 
-                           json={'model': 'embeddinggemma:300m', 'prompt': text})
+                           json={'model': 'nomic-embed-text:v1.5', 'prompt': text})
     return response.json()['embedding']
 
 # Сохранение в Qdrant
@@ -215,6 +215,13 @@ curl -X POST http://localhost:11434/api/pull -d '{"name": "llama2:7b"}'
 
 # Удаление модели
 curl -X DELETE http://localhost:11434/api/delete -d '{"name": "model-name"}'
+
+# Создание алиаса модели (копия с простым именем)
+curl -X POST http://localhost:11434/api/copy \
+  -d '{
+    "source": "nomic-embed-text:v1.5",
+    "destination": "nomic-embed-text"
+  }'
 ```
 
 ### Работа с коллекциями в Qdrant:

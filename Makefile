@@ -39,8 +39,8 @@ setup:
 	@echo "Ожидание запуска Ollama..."
 	sleep 10
 	@echo "Загрузка моделей в Ollama..."
-	@echo "Загрузка модели embeddinggemma:300m..."
-	curl -X POST http://localhost:11434/api/pull -d '{"name": "embeddinggemma:300m"}'
+	@echo "Загрузка модели nomic-embed-text:v1.5..."
+	curl -X POST http://localhost:11434/api/pull -d '{"name": "nomic-embed-text:v1.5"}'
 	@echo ""
 	@echo "Загрузка модели qwen2.5-coder:7b..."
 	curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder:7b"}'
@@ -52,8 +52,8 @@ setup:
 ## Загрузка моделей в Ollama
 pull-models:
 	@echo "Загрузка моделей в Ollama..."
-	@echo "Загрузка модели embeddinggemma:300m..."
-	curl -X POST http://localhost:11434/api/pull -d '{"name": "embeddinggemma:300m"}'
+	@echo "Загрузка модели nomic-embed-text:v1.5..."
+	curl -X POST http://localhost:11434/api/pull -d '{"name": "nomic-embed-text:v1.5"}'
 	@echo ""
 	@echo "Загрузка модели qwen2.5-coder:7b..."
 	curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder:7b"}'
