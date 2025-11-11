@@ -39,11 +39,11 @@ setup:
 	@echo "Ожидание запуска Ollama..."
 	sleep 10
 	@echo "Загрузка моделей в Ollama..."
-	@echo "Загрузка модели nomic-embed-text:v1.5..."
-	curl -X POST http://localhost:11434/api/pull -d '{"name": "nomic-embed-text:v1.5"}'
+	@echo "Загрузка модели nomic-embed-text..."
+	curl -X POST http://localhost:11434/api/pull -d '{"name": "nomic-embed-text"}'
 	@echo ""
-	@echo "Загрузка модели qwen2.5-coder:7b..."
-	curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder:7b"}'
+	@echo "Загрузка модели qwen2.5-coder..."
+	curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder"}'
 	@echo ""
 	@echo "Настройка завершена!"
 	@echo "Ollama доступен на: http://localhost:11434"
@@ -52,11 +52,11 @@ setup:
 ## Загрузка моделей в Ollama
 pull-models:
 	@echo "Загрузка моделей в Ollama..."
-	@echo "Загрузка модели nomic-embed-text:v1.5..."
-	curl -X POST http://localhost:11434/api/pull -d '{"name": "nomic-embed-text:v1.5"}'
+	@echo "Загрузка модели nomic-embed-text..."
+	curl -X POST http://localhost:11434/api/pull -d '{"name": "nomic-embed-text"}'
 	@echo ""
-	@echo "Загрузка модели qwen2.5-coder:7b..."
-	curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder:7b"}'
+	@echo "Загрузка модели qwen2.5-coder..."
+	curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder"}'
 	@echo ""
 	@echo "Загрузка моделей завершена!"
 

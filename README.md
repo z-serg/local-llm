@@ -10,7 +10,7 @@
 
 - **Ollama** - Сервер для запуска и управления локальными языковыми моделями
   - Порт: `11434`
-  - Предустановленные модели: `nomic-embed-text:v1.5` и `qwen2.5-coder:7b`
+  - Предустановленные модели: `nomic-embed-text:@latest` и `qwen2.5-coder:@latest`
   - Данные сохраняются в Docker volume `ollama_data`
 
 - **Qdrant** - Высокопроизводительная векторная база данных
@@ -56,8 +56,8 @@ docker-compose up -d
 sleep 10
 
 # Загрузка моделей
-curl -X POST http://localhost:11434/api/pull -d '{"name": "nomic-embed-text:v1.5"}'
-curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder:7b"}'
+curl -X POST http://localhost:11434/api/pull -d '{"name": "nomic-embed-text"}'
+curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder"}'
 ```
 
 ## 🛠️ Использование Makefile
@@ -112,13 +112,13 @@ make help    # Показать справку по всем командам
 
 Платформа включает две предустановленные модели:
 
-### nomic-embed-text:v1.5
+### nomic-embed-text:@latest
 - **Тип**: Модель для создания эмбеддингов (векторных представлений)
 - **Размер**: 300 миллионов параметров
 - **Назначение**: Преобразование текста в векторные представления для поиска и классификации
 - **Использование**: Создание эмбеддингов для векторного поиска в Qdrant
 
-### qwen2.5-coder:7b
+### qwen2.5-coder:@latest
 - **Тип**: Кодогенерирующая языковая модель
 - **Размер**: 7 миллиардов параметров
 - **Назначение**: Генерация и анализ кода, помощь в программировании
@@ -135,7 +135,7 @@ import json
 # Создание эмбеддингов через Ollama
 def create_embedding(text):
     response = requests.post('http://localhost:11434/api/embeddings', 
-                           json={'model': 'nomic-embed-text:v1.5', 'prompt': text})
+                           json={'model': 'nomic-embed-text', 'prompt': text})
     return response.json()['embedding']
 
 # Сохранение в Qdrant
@@ -169,7 +169,7 @@ import requests
 
 def generate_code(prompt):
     payload = {
-        "model": "qwen2.5-coder:7b",
+        "model": "qwen2.5-coder",
         "prompt": f"Напиши код на Python для: {prompt}",
         "stream": False
     }
@@ -211,7 +211,7 @@ def semantic_search(query, documents_collection):
 curl http://localhost:11434/api/tags
 
 # Загрузка дополнительной модели
-curl -X POST http://localhost:11434/api/pull -d '{"name": "llama2:7b"}'
+curl -X POST http://localhost:11434/api/pull -d '{"name": "llama2"}'
 
 # Удаление модели
 curl -X DELETE http://localhost:11434/api/delete -d '{"name": "model-name"}'
@@ -219,7 +219,7 @@ curl -X DELETE http://localhost:11434/api/delete -d '{"name": "model-name"}'
 # Создание алиаса модели (копия с простым именем)
 curl -X POST http://localhost:11434/api/copy \
   -d '{
-    "source": "nomic-embed-text:v1.5",
+    "source": "nomic-embed-text",
     "destination": "nomic-embed-text"
   }'
 ```
