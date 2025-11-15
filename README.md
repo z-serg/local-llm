@@ -50,7 +50,7 @@ make setup
 
 ```bash
 # Запуск сервисов
-docker-compose up -d
+docker compose up -d
 
 # Ожидание запуска Ollama
 sleep 10

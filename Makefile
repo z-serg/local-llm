@@ -8,12 +8,12 @@
 ## Запуск сервисов в фоне
 up:
 	@echo "Запуск сервисов Ollama и Qdrant..."
-	docker-compose up -d
+	docker compose up -d
 
 ## Остановка сервисов
 down:
 	@echo "Остановка сервисов..."
-	docker-compose down
+	docker compose down
 
 ## Перезапуск сервисов
 restart: down up
@@ -22,12 +22,12 @@ restart: down up
 ## Просмотр логов всех сервисов
 logs:
 	@echo "Просмотр логов сервисов..."
-	docker-compose logs -f
+	docker compose logs -f
 
 ## Статус сервисов
 status:
 	@echo "Статус контейнеров:"
-	docker-compose ps
+	docker compose ps
 
 # Команды для работы с моделями Ollama
 
@@ -35,16 +35,16 @@ status:
 setup:
 	@echo "Запуск полной настройки проекта..."
 	@echo "Запуск сервисов Ollama и Qdrant..."
-	docker-compose up -d
+	docker compose up -d
 	@echo "Ожидание запуска Ollama..."
 	sleep 10
 	@echo "Загрузка моделей в Ollama..."
 	@echo "Загрузка модели nomic-embed-text..."
 	curl -X POST http://localhost:11434/api/pull -d '{"name": "nomic-embed-text"}'
 	@echo ""
-	@echo "Загрузка модели qwen2.5-coder..."
-	curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder"}'
-	@echo ""
+# 	@echo "Загрузка модели qwen2.5-coder..."
+# 	curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder"}'
+# 	@echo ""
 	@echo "Настройка завершена!"
 	@echo "Ollama доступен на: http://localhost:11434"
 	@echo "Qdrant доступен на: http://localhost:6333"
@@ -55,9 +55,9 @@ pull-models:
 	@echo "Загрузка модели nomic-embed-text..."
 	curl -X POST http://localhost:11434/api/pull -d '{"name": "nomic-embed-text"}'
 	@echo ""
-	@echo "Загрузка модели qwen2.5-coder..."
-	curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder"}'
-	@echo ""
+# 	@echo "Загрузка модели qwen2.5-coder..."
+# 	curl -X POST http://localhost:11434/api/pull -d '{"name": "qwen2.5-coder"}'
+# 	@echo ""
 	@echo "Загрузка моделей завершена!"
 
 # Команды очистки
@@ -70,7 +70,7 @@ clean: down
 clean-volumes:
 	@echo "ВНИМАНИЕ: Полная очистка с удалением томов!"
 	@echo "Все данные моделей и векторной базы будут удалены!"
-	docker-compose down -v
+	docker compose down -v
 	@echo "Тома удалены"
 
 # Информационные команды
